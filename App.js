@@ -1,28 +1,77 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
+  const [goalInput, setGoalInput] = useState('');
+  const [goalList, setGoalList] = useState([]);
+
+  const goalInputHandler = (textInput) => {
+    setGoalInput(textInput);
+  };
+
+  const addGoalHandler = () => {
+    setGoalList((currentGoalList) => [...currentGoalList, goalInput]);
+  };
+
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.dummyText}>Hello World</Text>
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your Course Goal"
+          onChangeText={goalInputHandler}
+        />
+        <Button
+          title="Add Goal"
+          onPress={addGoalHandler}
+        />
       </View>
-      <Text style={styles.dummyText}>Another Text Component</Text>
-      <Button title="Tap Me!" />
+      <View style={styles.goalsContainer}>
+        {goalList.map((goal) => (
+          <View
+            key={goal}
+            style={styles.goalItem}
+          >
+            <Text style={styles.goalText}>{goal}</Text>
+          </View>
+        ))}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
+  appContainer: {
     flex: 1,
-    justifyContent: 'center'
+    paddingHorizontal: 16,
+    paddingTop: 50
   },
-  dummyText: {
-    borderColor: 'red',
-    borderWidth: 2,
-    margin: 16,
-    padding: 16
+  goalItem: {
+    backgroundColor: '#5e0acc',
+    borderRadius: 6,
+    margin: 8,
+    padding: 8
+  },
+  goalText: {
+    color: 'white'
+  },
+  goalsContainer: {
+    flex: 5
+  },
+  inputContainer: {
+    alignItems: 'center',
+    borderBottomColor: '#cccccc',
+    borderBottomWidth: 1,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 24
+  },
+  textInput: {
+    borderColor: '#cccccc',
+    borderWidth: 1,
+    marginRight: 8,
+    padding: 8,
+    width: '70%'
   }
 });
