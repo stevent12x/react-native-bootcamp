@@ -1,7 +1,8 @@
 import { Alert, StyleSheet, TextInput, View } from 'react-native';
-import { PrimaryButton } from "../components/PrimaryButton";
+import { PrimaryButton } from "../components/ui/PrimaryButton";
 import { useState } from 'react';
 import Colors from '../util/colors';
+import { Title } from '../components/ui/Title';
 
 export const StartGame = ({onConfirm}) => {
   const [number, setNumber] = useState('');
@@ -29,62 +30,69 @@ export const StartGame = ({onConfirm}) => {
   }
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        autoCapitalize={"none"}
-        autoCorrect={false}
-        keyboardType={"number-pad"}
-        value={number}
-        onChangeText={inputNumberHandler}
-      />
-      <View style={styles.btnsContainer}>
-        <View style={styles.btnContainer}>
-          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-        </View>
-        <View style={styles.btnContainer}>
-          <PrimaryButton onPress={confirmNumberHandler}>Confirm</PrimaryButton>
+      <View style={styles.rootContainer}>
+        <Title>Guess My Number</Title>
+        <View style={styles.inputContainer}>
+            <TextInput
+                style={styles.numberInput}
+                maxLength={2}
+                autoCapitalize={"none"}
+                autoCorrect={false}
+                keyboardType={"number-pad"}
+                value={number}
+                onChangeText={inputNumberHandler}
+            />
+            <View style={styles.btnsContainer}>
+                <View style={styles.btnContainer}>
+                    <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+                </View>
+                <View style={styles.btnContainer}>
+                    <PrimaryButton onPress={confirmNumberHandler}>Confirm</PrimaryButton>
+                </View>
+            </View>
         </View>
       </View>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    marginTop: 100,
-    marginHorizontal: 24,
-    borderRadius: 8,
-    shadowColor: Colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 4,
+    rootContainer: {
+        flex: 1,
+        marginTop: 100,
+        alignItems: 'center',
     },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
-    backgroundColor: Colors.primary600,
-    alignItems: "center",
+    inputContainer: {
+        padding: 10,
+        marginTop: 36,
+        marginHorizontal: 24,
+        borderRadius: 8,
+        shadowColor: Colors.black,
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowRadius: 6,
+        shadowOpacity: 0.25,
+        backgroundColor: Colors.primary600,
+        justifyContent: 'center',
+        alignItems: 'center',
   },
-  numberInput: {
-    height: 50,
-    width: 50,
-    textAlign: "center",
-    fontSize: 32,
-    borderBottomColor: Colors.accent500,
-    borderBottomWidth: 2,
-    color: Colors.accent500,
-    marginVertical: 8,
-    fontWeight: "bold",
+    numberInput: {
+        height: 50,
+        width: 50,
+        textAlign: "center",
+        fontSize: 32,
+        borderBottomColor: Colors.accent500,
+        borderBottomWidth: 2,
+        color: Colors.accent500,
+        marginVertical: 8,
+        fontWeight: "bold",
   },
   btnsContainer: {
     flexDirection: "row",
-    marginTop: 12,
   },
   btnContainer: {
     flex: 1,
-    marginHorizontal: 4,
   },
   resetBtn: {},
   confirmBtn: {},
