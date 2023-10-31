@@ -1,8 +1,10 @@
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Title } from '../components/ui/Title';
 import { NumberContainer } from '../components/game/NumberContainer';
 import { PrimaryButton } from '../components/ui/PrimaryButton';
+import { Card } from '../components/ui/Card';
+import { InstructionText } from '../components/ui/InstructionText';
 
 const generateRandomNumberBetween = (min, max, exclude) => {
     const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -49,27 +51,40 @@ export const Game = ({userNum, onGameOver}) => {
       <View style={styles.inputContainer}>
         <Title>App's Guess</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
-            <View>
-                <Text>HIGHER OR LOWER?</Text>
-                <View style={styles.btnContainer}>
+            <Card>
+                <InstructionText style={styles.instructionText}>
+                  HIGHER OR LOWER?
+                </InstructionText>
+                <View style={styles.btnsContainer}>
+                  <View style={styles.btnContainer}>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
                         -
                     </PrimaryButton>
+                  </View>
+                  <View style={styles.btnContainer}>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
                         +
                     </PrimaryButton>
+                  </View>
                 </View>
-            </View>
+            </Card>
     {/*<View>/!*LOG ROUNDS*!/</View>*/}
     </View>
   )};
 
 const styles = StyleSheet.create({
-    inputContainer: {
-        flex: 1,
-        padding: 24,
-    },
-    btnContainer: {
-        flexDirection: 'row',
-    }
+  inputContainer: {
+    flex: 1,
+    padding: 24,
+  },
+  instructionText: {
+    marginBottom: 12,
+  },
+  btnsContainer: {
+    flexDirection: 'row',
+  },
+  btnContainer: {
+    flex: 1,
+    marginHorizontal: 12,
+  }
 });
