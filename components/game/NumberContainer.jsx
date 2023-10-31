@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: Colors.accent500,
-        fontWeight: 'bold',
-        fontSize: 36
+      fontFamily: 'open-sans-bold',
+      color: Colors.accent500,
+      fontSize: 36
     }
 });
