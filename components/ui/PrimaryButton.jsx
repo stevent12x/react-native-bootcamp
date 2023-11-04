@@ -22,12 +22,12 @@ export const PrimaryButton = ({ children, onPress }) => {
 const styles = StyleSheet.create({
   btnOuterContainer: {
     borderRadius: 28,
-    margin: 2,
+    margin: 4,
     overflow: "hidden",
   },
   btnInnerContainer: {
     backgroundColor: Colors.primary500,
-    padding: 8,
+    paddingVertical: 8,
     paddingHorizontal: 16,
     shadowColor: Colors.black,
     shadowOffset: {
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 4,
     shadowOpacity: 0.25,
+    elevation: 2
   },
   btnText: {
     color: Colors.white,

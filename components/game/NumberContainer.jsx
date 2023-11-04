@@ -11,13 +11,13 @@ export const NumberContainer = ({children}) => {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 4,
-        borderColor: Colors.accent500,
-        padding: 24,
-        borderRadius: 8,
-        margin: 24,
-        alignItems: 'center',
-        justifyContent: 'center'
+      borderWidth: 4,
+      borderColor: Colors.accent500,
+      padding: 24,
+      borderRadius: 8,
+      margin: 24,
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     text: {
       fontFamily: 'open-sans-bold',
