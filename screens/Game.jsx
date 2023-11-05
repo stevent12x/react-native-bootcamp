@@ -60,26 +60,26 @@ export const Game = ({userNum, onGameOver}) => {
   return (
       <View style={styles.inputContainer}>
         <Title>App's Guess</Title>
-            <NumberContainer>{currentGuess}</NumberContainer>
-            <Card>
-                <InstructionText style={styles.instructionText}>
-                  Higher or Lower?
-                </InstructionText>
-                <View style={styles.btnsContainer}>
-                  <View style={styles.btnContainer}>
+        <NumberContainer>{currentGuess}</NumberContainer>
+        <Card>
+            <InstructionText style={styles.instructionText}>
+                Higher or Lower?
+            </InstructionText>
+            <View style={styles.btnsContainer}>
+                <View style={styles.btnContainer}>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
                       <Ionicons name="md-remove" size={28} color="white" />
                     </PrimaryButton>
-                  </View>
-                  <View style={styles.btnContainer}>
+                </View>
+                <View style={styles.btnContainer}>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
                         <Ionicons name="md-add" size={28} color="white" />
                     </PrimaryButton>
-                  </View>
                 </View>
-            </Card>
-            <View style={styles.listContainer}>
-              <FlatList
+            </View>
+        </Card>
+        <View style={styles.listContainer}>
+            <FlatList
                 data={guessRounds}
                 renderItem={(itemData) =>
                     <GuessLogItem
@@ -87,8 +87,8 @@ export const Game = ({userNum, onGameOver}) => {
                       guess={itemData.item}>
                     </GuessLogItem>}
                 keyExtractor={(item) => item}
-              />
-            </View>
+            />
+        </View>
     </View>
   )};
 
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     padding: 24,
+    alignItems: 'center',
   },
   instructionText: {
     marginBottom: 12,
